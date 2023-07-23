@@ -12,6 +12,5 @@ Next steps: (Some of them have been implemented in another branch feature/TS-Imp
 2. Implement system-wide configurations for CORS.
 3. Implement logging for issues.
 4. Utilize property files to remove hardcoded variables from the code.
-5. Use separate exception classes for different types of exceptions.
-6. Create a separate messages file to store all messages so that they can be changed without changing code
+5. Create a separate messages file to store all messages so that they can be changed without changing code
 
