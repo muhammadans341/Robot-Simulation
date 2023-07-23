@@ -12,7 +12,7 @@ public class ForwardMovement extends MovementStrategy {
     @Override
     public void execute(Robot robot, List<String> argsList) {
         if (argsList.size() != 1) {
-            throw new IllegalArgumentException("Invalid number of arguments for POSITION command");
+            throw new IllegalArgumentException("Invalid number of arguments for FORWARD command");
         }
         try {
             int steps = Integer.parseInt(argsList.get(0));
