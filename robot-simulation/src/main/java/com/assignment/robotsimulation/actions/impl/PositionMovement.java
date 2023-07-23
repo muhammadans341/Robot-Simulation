@@ -8,6 +8,7 @@ import com.assignment.robotsimulation.exceptions.InvalidGridPositionException;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,7 +16,8 @@ import java.util.List;
 @Component
 public class PositionMovement extends MovementStrategy {
     private static final Logger LOGGER= LoggerFactory.getLogger(PositionMovement.class);
-
+    @Value("${movement.strategy.position:POSITION}")
+    private String actionName;
     @Override
     public void execute(Robot robot, List<String> argsList) {
         LOGGER.info("Started executing Position Movement");
@@ -37,7 +39,7 @@ public class PositionMovement extends MovementStrategy {
     }
     @Override
     public String getActionName() {
-        return "POSITION";
+        return actionName;
     }
     private static Coordinates getCoordinatesFromArguments(List<String> params) {
         int x,y;

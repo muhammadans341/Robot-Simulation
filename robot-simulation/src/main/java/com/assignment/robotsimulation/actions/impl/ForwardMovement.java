@@ -7,6 +7,7 @@ import com.assignment.robotsimulation.exceptions.InvalidGridPositionException;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,6 +16,9 @@ import java.util.List;
 @Slf4j
 public class ForwardMovement extends MovementStrategy {
     private static final Logger LOGGER= LoggerFactory.getLogger(ForwardMovement.class);
+    @Value("${movement.strategy.forward:FORWARD}")
+    private String actionName;
+
     @Override
     public void execute(Robot robot, List<String> argsList) {
         LOGGER.info("Started executing Forward Movement");
@@ -39,6 +43,6 @@ public class ForwardMovement extends MovementStrategy {
     }
     @Override
     public String getActionName() {
-        return "FORWARD";
+        return actionName;
     }
 }

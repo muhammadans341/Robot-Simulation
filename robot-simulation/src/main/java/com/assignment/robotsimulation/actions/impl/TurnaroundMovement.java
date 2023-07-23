@@ -16,9 +16,11 @@ import java.util.List;
 public class TurnaroundMovement extends MovementStrategy {
     private static final Logger LOGGER= LoggerFactory.getLogger(TurnaroundMovement.class);
 
+    @Value("${movement.strategy.turnaround:TURNAROUND}")
+    private String actionName;
     @Override
     public String getActionName() {
-        return "TURNAROUND";
+        return actionName;
     }
     @Override
     public void execute(Robot robot, List<String> argsList){

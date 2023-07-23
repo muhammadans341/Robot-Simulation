@@ -15,7 +15,8 @@ import java.util.List;
 @Slf4j
 public class LeftMovement extends MovementStrategy {
     private static final Logger LOGGER= LoggerFactory.getLogger(LeftMovement.class);
-
+    @Value("${movement.strategy.left:LEFT}")
+    private String actionName;
     @Override
     public void execute(Robot robot, List<String> argsList) {
         LOGGER.info("Started executing Left Movement");
@@ -24,6 +25,6 @@ public class LeftMovement extends MovementStrategy {
     }
     @Override
     public String getActionName() {
-        return "LEFT";
+        return actionName;
     }
 }
