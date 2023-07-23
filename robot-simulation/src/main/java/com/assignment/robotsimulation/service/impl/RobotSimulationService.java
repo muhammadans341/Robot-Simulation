@@ -1,11 +1,14 @@
 package com.assignment.robotsimulation.service.impl;
 
 import com.assignment.robotsimulation.actions.MovementStrategy;
+import com.assignment.robotsimulation.command.Command;
+import com.assignment.robotsimulation.command.CommandParser;
 import com.assignment.robotsimulation.domain.response.SimulationResponse;
 import com.assignment.robotsimulation.enums.Direction;
 import com.assignment.robotsimulation.actions.MovementStrategyFactory;
 import com.assignment.robotsimulation.domain.Coordinates;
 import com.assignment.robotsimulation.domain.Robot;
+import com.assignment.robotsimulation.exceptions.ActionNotFoundException;
 import com.assignment.robotsimulation.service.SimulationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -39,18 +42,16 @@ public class RobotSimulationService implements SimulationService {
     }
     private void executeScript(Robot robot, String simulationRound){
         simulationRound.lines().forEach(command -> {
-                executeCommand(robot,command.trim());
+                Command parsedCommand = CommandParser.parseCommand(command);
+                executeCommand(robot,parsedCommand);
         });
     }
-    private void executeCommand(Robot robot, String command) {
-        String[] parts = command.split(" ");
-        List<String> argsList = Arrays.stream(parts,1, parts.length).toList();
-        String action = parts[0];
-        MovementStrategy strategy = movementStrategyFactory.getStrategy(action);
+    private void executeCommand(Robot robot, Command command) {
+        MovementStrategy strategy = movementStrategyFactory.getStrategy(command.getAction());
         if (strategy == null) {
-            throw new IllegalArgumentException("Invalid action provided: " + command);
+            throw new ActionNotFoundException("Invalid action provided: " + command);
         }
-        strategy.execute(robot, argsList);
+        strategy.execute(robot, command.getArguments());
     }
     private SimulationResponse buildSimulationResponse(Robot robot) {
         return SimulationResponse.builder()

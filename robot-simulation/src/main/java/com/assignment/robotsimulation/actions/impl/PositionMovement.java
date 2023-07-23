@@ -4,6 +4,10 @@ import com.assignment.robotsimulation.actions.MovementStrategy;
 import com.assignment.robotsimulation.enums.Direction;
 import com.assignment.robotsimulation.domain.Coordinates;
 import com.assignment.robotsimulation.domain.Robot;
+import com.assignment.robotsimulation.exceptions.InvalidGridPositionException;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -22,7 +26,7 @@ public class PositionMovement extends MovementStrategy {
             robot.setDirection(Direction.findDirection(argsList.get(2)));
         }
         else{
-            throw new IllegalArgumentException("Coordinates leaving grid while positioning robot");
+            throw new InvalidGridPositionException("Coordinates leaving grid while positioning robot");
         }
     }
     @Override
@@ -39,6 +43,4 @@ public class PositionMovement extends MovementStrategy {
         }
         return new Coordinates(x, y);
     }
-
-
 }
