@@ -17,4 +17,12 @@ public class SimulationExceptionHandler {
         return new ResponseEntity<>(
                 new BaseResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage()), new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(value
+            = {Exception.class})
+    private ResponseEntity<Object> handleUncaughtException(
+            Exception ex, WebRequest request) {
+        return new ResponseEntity<>(
+                new BaseResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage()), new HttpHeaders(), HttpStatus.BAD_REQUEST);
+    }
 }
