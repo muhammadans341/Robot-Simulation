@@ -56,7 +56,7 @@ public enum Direction {
         return new Coordinates(newX, newY);
     }
 
-    public static Direction fromString(String direction) {
+    public static Direction findDirection(String direction) {
         for (Direction d : Direction.values()) {
             if (d.name().equalsIgnoreCase(direction)) {
                 return d;

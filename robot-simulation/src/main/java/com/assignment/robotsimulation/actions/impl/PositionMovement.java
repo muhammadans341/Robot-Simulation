@@ -4,7 +4,6 @@ import com.assignment.robotsimulation.actions.MovementStrategy;
 import com.assignment.robotsimulation.enums.Direction;
 import com.assignment.robotsimulation.domain.Coordinates;
 import com.assignment.robotsimulation.domain.Robot;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,7 +19,7 @@ public class PositionMovement extends MovementStrategy {
 
         if(isValidPosition(coordinates)) {
             robot.setCoordinates(coordinates);
-            robot.setDirection(Direction.fromString(argsList.get(2)));
+            robot.setDirection(Direction.findDirection(argsList.get(2)));
         }
         else{
             throw new IllegalArgumentException("Coordinates leaving grid while positioning robot");
