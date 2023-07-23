@@ -14,9 +14,13 @@ import java.util.List;
 
 @Component
 public class PositionMovement extends MovementStrategy {
+    private static final Logger LOGGER= LoggerFactory.getLogger(PositionMovement.class);
+
     @Override
     public void execute(Robot robot, List<String> argsList) {
+        LOGGER.info("Started executing Position Movement");
         if (argsList.size() != 3) {
+            LOGGER.error("Invalid number of arguments provided for POSITION command");
             throw new IllegalArgumentException("Invalid number of arguments for POSITION command");
         }
         Coordinates coordinates=getCoordinatesFromArguments(argsList);
@@ -26,8 +30,10 @@ public class PositionMovement extends MovementStrategy {
             robot.setDirection(Direction.findDirection(argsList.get(2)));
         }
         else{
+            LOGGER.error("Coordinates leaving grid while positioning robot");
             throw new InvalidGridPositionException("Coordinates leaving grid while positioning robot");
         }
+        LOGGER.info("Finished executing Position Movement");
     }
     @Override
     public String getActionName() {
@@ -39,6 +45,7 @@ public class PositionMovement extends MovementStrategy {
             x = Integer.parseInt(params.get(0));
             y = Integer.parseInt(params.get(1));
         } catch (NumberFormatException e) {
+            LOGGER.error("invalid coordinate param provided for positioning");
             throw new IllegalArgumentException("invalid coordinate param provided for positioning");
         }
         return new Coordinates(x, y);
