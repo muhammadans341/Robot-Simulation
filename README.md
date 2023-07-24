@@ -20,9 +20,28 @@ Stand-up:
 
 **Tech Stack:**
 
-Java 17
-Springboot 3.0.9
-Maven
-React JS
+1.Java 17
+2.Springboot 3.0.9
+3.Maven
+4.React JS
 
+**How to run:**
+**backend:**
 
+Simply move to directory "Robot-Simulation/robot-simulation" and run
+```
+mvn clean spring-boot:run 
+```
+
+frontend:
+
+Simply move to directory "Robot-Simulation/robot-simulation-frontend" and run
+```
+npn install
+```
+
+it will install required packages. Then run
+```
+npm run dev
+```
+Hit the URL and enter the script.
