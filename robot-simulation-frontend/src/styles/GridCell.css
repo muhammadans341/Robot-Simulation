@@ -1,0 +1,53 @@
+/* styles/GridCell.css */
+
+.grid-cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #f9f9f9; 
+    color: #333; 
+    transition: background-color 0.3s ease;
+  }
+  
+
+  .grid-cell:hover {
+    background-color: #ddd;
+  }
+  
+  .robot {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px; 
+  }
+  
+  .robot-img {
+    transition: transform 0.5s; /* Optional: Add a smooth transition for the rotation */
+  }
+  
+  /* Rotate the image based on the direction */
+  .robot-img.direction-north {
+    transform: rotate(0deg);
+  }
+  
+  .robot-img.direction-east {
+    transform: rotate(90deg);
+  }
+  
+  .robot-img.direction-south {
+    transform: rotate(180deg);
+  }
+  
+  .robot-img.direction-west {
+    transform: rotate(-90deg);
+  }

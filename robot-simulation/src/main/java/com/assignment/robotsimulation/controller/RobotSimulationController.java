@@ -18,16 +18,10 @@ public class RobotSimulationController {
     @PostMapping("/robot/simulate")
     public ResponseEntity<SimulationResponse> startSimulation(@RequestBody String simulationRound){
         SimulationResponse simulationResponse;
-        try {
-            simulationResponse = simulationService.simulateObject(simulationRound);
-            simulationResponse.setResultCode(HttpStatus.OK.value());
-            simulationResponse.setResultMessage("Simulation Successful");
-        }
-        catch (Exception e){
-            simulationResponse = new SimulationResponse();
-            simulationResponse.setResultMessage("Internal Error Occurred,"+e.getMessage());
-            simulationResponse.setResultCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        }
+        simulationResponse = simulationService.simulateObject(simulationRound);
+        simulationResponse.setResultCode(HttpStatus.OK.value());
+        simulationResponse.setResultMessage("Simulation Successful");
+
         return ResponseEntity.ok(simulationResponse);
     }
 }
