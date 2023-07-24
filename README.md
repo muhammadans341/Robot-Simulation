@@ -1,6 +1,7 @@
 # Robot-Simulation
 
-Stand-up:
+**Stand-up:**
+
 **Finished Parts:**
 1. Main backend functionality is complete.
 2. Solution of the assignment is designed by keeping SOLID and design principles in mind.
@@ -12,18 +13,19 @@ Stand-up:
 2. Implement system-wide configurations for CORS.
 3. Implement logging for issues.
 4. Utilize property files to remove hardcoded variables from the code.
-5. Create a separate messages file to store all messages so that they can be changed without changing code
 
 **Could be improved:**
 1. Making Grid configureable as well both on frontend and backend.
 2. Proper error handling is done on backend but should be done on UI as well with proper messages.
+3. Could have added more unit tests
+4. Create a separate messages file to store all messages so that they can be changed without changing code
 
 **Tech Stack:**
 
-1.Java 17
-2.Springboot 3.0.9
-3.Maven
-4.React JS
+1. Java 17
+2. Springboot 3.0.9
+3. Maven
+4. React Js
 
 **How to run:**
 **backend:**
